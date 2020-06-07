@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :User
-  belongs_to :Book
+  belongs_to :user
+  belongs_to :book
   has_many :comments, dependent: :destroy
 end

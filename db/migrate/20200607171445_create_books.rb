@@ -8,8 +8,8 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :author
       t.float :rating
       t.integer :status
-      t.references :User, null: false, foreign_key: true
-      t.references :Category, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end
