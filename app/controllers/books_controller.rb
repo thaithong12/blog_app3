@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    
     def index
         
     end
@@ -7,6 +8,7 @@ class BooksController < ApplicationController
     end
     
     def show
+        @categories = Category.all
         @book = Book.find_by id: params[:id]
     end
     def create

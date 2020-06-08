@@ -23,15 +23,16 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
-
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-turbolinks'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'ckeditor'
 
 gem 'carrierwave'
 gem 'mini_magick' 
-
-gem 'font-awesome-sass', '~> 5.13.0'
+gem 'wow-rails'
+gem 'font-awesome-sass', '~> 4.7.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'

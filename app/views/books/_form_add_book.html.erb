@@ -1,20 +1,26 @@
 <div class="container single-post-details-area form-add-book">
     <h3 style="text-align: center;">Create Book</h3>
+
+    <%= form_for @book do |f| %> 
+      <div class="form-group">
+        <%= f.label :book_name %> 
+        <%= f.text_field :book_name, class: "form-control",placeholder: "Enter Book Name"  %> 
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <%= f.label :author  %> 
+      <%= f.text_field :author, class:"form-control",id:"exampleInputPassword1",placeholder:"Enter Author Name"  %> 
+    </div>
+    <div class="form-group">
+      <%= f.label :Categories %> 
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :category_name),{}, {:class => 'form-control'})%>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <% end  %> 
     <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Book Name </label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Book Name">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Author</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Author Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Categories</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
+  
+  
   <div class="form-group">
     <label for="exampleInputEmail1">Publish Date</label>
     <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

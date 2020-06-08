@@ -4,15 +4,13 @@
     <title>FoodBlog2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <%= stylesheet_link_tag 'style.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+    <%= stylesheet_link_tag 'application.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
-     
   </head>
 
   <body>
     <%= yield %>
-     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <%= javascript_include_tag Ckeditor.cdn_url  %> 
   </body>
 </html>
