@@ -1,0 +1,121 @@
+<%= stylesheet_link_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= render "shared/header-area"  %> 
+<div class="breadcrumb-area"> 
+    <div class="container">
+        <div class="row">
+                <div class="col-12">
+                    <%= image_tag  "breadcrumb-line.png",style:"height: auto;max-width: 100%;" %>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Blog List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Blog Single</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+    </div>
+
+  <section class="blog-content-area section-padding-0-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Blog Posts Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts-area">
+
+                        <!-- Post Details Area -->
+                       <%= render  "form_add_book" %>
+
+                        <!-- Post Tags & Share -->
+                        <div class="post-tags-share d-flex justify-content-between align-items-center">
+                            <!-- Tags -->
+                        
+                            <!-- Share -->
+                            <div class="post-share">
+                                <span>Share:</span>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Related Post Area -->
+                        
+
+                        <!-- Comment Area Start -->
+                       
+
+                        <!-- Leave A Comment -->
+                      
+                    </div>
+                </div>
+
+                <!-- Blog Sidebar Area -->
+                <div class="col-12 col-sm-9 col-md-6 col-lg-4">
+                    <div class="post-sidebar-area">
+
+                        <!-- ##### Single Widget Area ##### -->
+                        <div class="single-widget-area mt-0">
+                            <!-- Title -->
+                            <div class="widget-title">
+                                <h6>Categories</h6>
+                            </div>
+                            <ol class="foode-catagories">
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> Drink</span> <span>(18)</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> Foody</span> <span>(28)</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> Tea</span> <span>(15)</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> Coffee</span> <span>(27)</span></a></li>
+                            </ol>
+                        </div>
+
+                        <!-- ##### Single Widget Area ##### -->
+                        <div class="single-widget-area">
+                            <!-- Title -->
+                            <div class="widget-title">
+                                <h6>Latest Posts</h6>
+                            </div>
+
+                            <!-- Single Latest Posts -->
+                            <%= render  "shared/content-short" %>
+
+                        </div>
+
+                        <!-- ##### Single Widget Area ##### -->
+                        <div class="single-widget-area">
+                            <!-- Adds -->
+                            <a href="#"><img src="img/blog-img/add.png" alt=""></a>
+                        </div>
+
+                        <!-- ##### Single Widget Area ##### -->
+                        <div class="single-widget-area">
+                            <!-- Title -->
+                            <div class="widget-title">
+                                <h6>Archives</h6>
+                            </div>
+                            <ol class="foode-archives">
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> January 2018</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> February 2018</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> March 2018</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> April 2018</span></a></li>
+                                <li><a href="#"><span><i class="fa fa-stop" aria-hidden="true"></i> May 2018</span></a></li>
+                            </ol>
+                        </div>
+
+                        <!-- ##### Single Widget Area ##### -->
+                      
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<%= render "shared/instagram"  %> 
+
+<%= render "shared/footer-area"  %>
+
+<%= render "shared/footer-script"  %>

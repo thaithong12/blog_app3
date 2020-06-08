@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
-  belongs_to :User
-  belongs_to :Category
-  has_many :favoritebooks ,dependent: :destroy
+  belongs_to :user
+  belongs_to :category
+  has_many :favorite_books ,dependent: :destroy
   has_many :reviews ,dependent: :destroy
+
 end

@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(user_name: "admin",
+			email: "example@railstutorial.org",
+			password: "foobar", 
+			password_confirmation: "foobar",
+            role: 1,
+			is_active: true)
+
+
+10.times do |n|
+	name = Faker::Name.name
+	email = "example-#{n+1}@railstutorial.org" 
+	password = "password"
+	User.create!(user_name: name,
+				email: email,
+				password: password, 
+                password_confirmation: password,
+                role: 0,
+                is_active: true)
+end
+
+10.times do |n|
+    name = Faker::Job.education_level
+    Category.create!(category_name: name)
+end
