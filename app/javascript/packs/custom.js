@@ -18,9 +18,7 @@ $(document).on('turbolinks:load', function() {
 	    //     }, 
 		// });
     })
-    $('#datetimepicker').datepicker({
-        todayHighlight: true,
-        format: 'dd/mm/yyyy',
-        startDate: new Date()   
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy'
     });
 });

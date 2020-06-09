@@ -121,8 +121,8 @@
     });
 
     // :: 11.0 wow Active Code
-    if (browserWindow.width() > 767) {
-        new WOW().init();
-    }
+    // if (browserWindow.width() > 767) {
+    //     new WOW().init();
+    // }
 
 })(jQuery);

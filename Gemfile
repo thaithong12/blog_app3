@@ -43,6 +43,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'momentjs-rails', '>= 2.9'
+gem 'popper_js'
 
 gem 'will_paginate', '~> 3.1.0'
 group :development, :test do

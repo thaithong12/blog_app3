@@ -14,9 +14,10 @@ require("jquery")
 //= require popper
 //= require ckeditor/init
 //= require wow
-//= require bootstrap-datepicker
 //= require plugins
 //= require active
+//= require custom
+//= require bootstrap-datepicker
 //= require_tree .
 window.$ = window.jQuery = require("jquery");
 // Uncomment to copy all static images under ../images to the output folder and reference
