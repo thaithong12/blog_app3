@@ -10,6 +10,9 @@
             $(this).remove();
         });
     });
+    $('.preloader').fadeOut('slow', function () {
+        $(this).remove();
+    });
 
     // :: 2.0 Nav Active Code
     if ($.fn.classyNav) {
