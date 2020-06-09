@@ -1,9 +1,11 @@
 class BooksController < ApplicationController
-    # before_action :is_login? ,only: [:create,:destroy]
+    before_action :is_login? ,only: [:create,:destroy]
     
     
     def index
-        @books = Book.order("created_at DESC")
+        @books = Book.by_created_at.paginate(page: params[:page], per_page: 30)
+        # where(status: 1)
+        # byebug
     end
     def new
         @book = Book.new
@@ -13,14 +15,14 @@ class BooksController < ApplicationController
         @book = Book.find_by id: params[:id]
     end
     def create
-        # @book= current_user.books.build micropost_params
-        @book = Book.new(book_params)
+        @book= current_user.books.build book_params
+        # @book = Book.new(book_params)      
         @book.image_url.attach book_params[:image_url] 
         @book.status = 0
-        @book.user_id = 1
-        # if current_user.is_admin?
-        #     @book.status = 1
-        # end
+        if is_admin?
+            @book.status = 1
+        end
+      
        if @book.save
             flash[:success] = "Create Book Success !"
             byebug
@@ -46,6 +48,11 @@ class BooksController < ApplicationController
             redirect_to books_path
         end
     end
+
+    def change_status
+        redirect_to :index
+    end
+    
     private 
 
     def book_params 

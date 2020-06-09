@@ -1,0 +1,58 @@
+ <%= stylesheet_link_tag 'sessions.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid"> 
+ <div class="row-fluid"> 
+  <div class="col-md-offset-6 col-md-6" id="box" > 
+   <h2>Account Login</h2> 
+   <hr> 
+
+   <%= form_for :sessions,:html => {:class => 'form-horizontal',:id => 'login_form'} do |f| %>
+         <fieldset> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+            
+            <%= f.email_field :email, class: "form-control",placeholder:"Username",required:'true' %>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+            <%= f.password_field :password,class:"form-control",placeholder:"Password",required:'true'  %> 
+       </div> 
+      </div> 
+     </div> 
+    
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+        <%= f.submit "Login", class:"btn btn-md btn-danger pull-right" %>
+      </div> 
+     </div> 
+
+      <div class="text-center p-t-45 p-b-4">
+<span class="txt1">
+Forgot
+</span>
+<a href="#" class="txt2 hov1">
+Username / Password?
+</a>
+</div>
+<div class="text-center">
+<span class="txt1">
+Create an account?
+</span>
+<a href="#" class="txt2 hov1">
+Sign up
+</a>
+</div>
+<br/>    
+<br/>   
+
+    </fieldset> 
+
+
+   <% end %>
+
+  </div> 
+ </div>
+</div>
