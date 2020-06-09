@@ -4,40 +4,30 @@
     <%= form_for @book do |f| %> 
       <div class="form-group">
         <%= f.label :book_name %> 
-        <%= f.text_field :book_name, class: "form-control",placeholder: "Enter Book Name"  %> 
+        <%= f.text_field :book_name, class: "form-control",placeholder: "Enter Book Name" %> 
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <%= f.label :author  %> 
-      <%= f.text_field :author, class:"form-control",id:"exampleInputPassword1",placeholder:"Enter Author Name"  %> 
+      <%= f.text_field :author, class:"form-control",id:"exampleInputPassword1",placeholder:"Enter Author Name"%> 
     </div>
     <div class="form-group">
       <%= f.label :Categories %> 
-      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :category_name),{}, {:class => 'form-control'})%>
+      <%= f.select :category_id, Category.pluck(:category_name, :id),{},{required: 'true', autofocus: 'true', class: 'form-control'} %>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
-
-    <% end  %> 
-    <form>
-  
-  
-  <div class="form-group">
+    <div class="form-group">
     <label for="exampleInputEmail1">Publish Date</label>
-    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <%= f.text_field :publish_date, as: :datetime_picker, class: "form-control",id:"datetimepicker" %> 
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-  
-   
+
   <div class="form-group">
     <label for="exampleInputEmail1">Description</label>
-    <textarea class="form-control ckeditor" id="ckeditor" aria-describedby="emailHelp"> </textarea>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+     <%= f.cktext_area :description, rows: 10 , class: "form-control ckeditor", id: "editor"%>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Cover Image</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">Submit</button>
-</form>
+ 
+   <%= f.submit "Create Book", class:"btn btn-success form-control"%>
+    <% end  %> 
 
 </div>
