@@ -15,6 +15,11 @@ module ApplicationHelper
     def get_name
         current_user.user_name
     end
+
+    def get_categories
+        @categories = Category.all.order("created_at ASC")
+    end
+    
     
     
 end

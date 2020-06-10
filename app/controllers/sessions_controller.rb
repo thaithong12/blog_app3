@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    before_action :is_login , only: [:index]
     def index
         
     end
@@ -21,7 +22,12 @@ class SessionsController < ApplicationController
       redirect_to root_path
     end
   
+    private 
 
-
+    def is_login
+        if current_user
+            redirect_to root_path
+        end
+    end
 
 end

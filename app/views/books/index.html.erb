@@ -46,6 +46,7 @@
                     <div class="blog-posts-area">
 
                         <!-- Post Details Area -->
+<% if @books.any? %> 
                        <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -86,11 +87,12 @@
    
     </tr>
      <% end  %> 
+     <%= will_paginate @books,params: { controller: :books, action: :index }%>
   </tbody>
   </div>
 </table>
 
-
+<% end %> 
                     </div>
                 </div>
 
