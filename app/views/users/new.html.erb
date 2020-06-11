@@ -1,0 +1,78 @@
+ <% provide :title , "Register"  %> 
+ <%= stylesheet_link_tag 'sessions.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid"> 
+ <div class="row-fluid"> 
+  <div class="col-md-offset-6 col-md-6" id="box" > 
+   <h2>Account Login</h2> 
+   <hr> 
+    <%= render  "shared/flash_msg" %>
+   <%= form_for @user ,:html => {:class => 'form-horizontal',:id => 'login_form'} do |f| %>
+        
+         <fieldset> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>         
+            <%= f.text_field :user_name, class: "form-control text-input-login",placeholder:"Username",required:'true' %>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>         
+            <%= f.email_field :email, class: "form-control text-input-login",placeholder:"Email",required:'true' %>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+            <%= f.password_field :password,class:"form-control text-input-login",placeholder:"Password",required:'true'  %> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+            <%= f.password_field :password_confirmation,class:"form-control text-input-login",placeholder:"Password",required:'true'  %> 
+       </div> 
+      </div> 
+     </div> 
+   
+     
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>         
+            <%= f.text_field :address, class: "form-control text-input-login",placeholder:"Address",required:'true' %>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>         
+            <%= f.date_field :birthday, class: "form-control text-input-login",placeholder:"Username",required:'true' %>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>         
+             <%= f.file_field :image_url, accept: "image/jpeg,image/gif,image/png" , required: 'true'%>
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+        <%= f.submit "Login", class:"btn btn-md btn-danger pull-right" %>
+      </div> 
+     </div> 
+<br/>    
+<br/>   
+
+    </fieldset> 
+
+
+   <% end %>
+
+  </div> 
+ </div>
+</div>
