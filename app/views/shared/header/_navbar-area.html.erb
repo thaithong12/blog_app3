@@ -45,11 +45,9 @@
                                     <% if current_user  %> 
                                         <li><a href="contact.html"><%= current_user.user_name  %>  </a>
                                             <ul class="dropdown">
-                                                <% if is_admin? %>
+                                               
                                                     <li><%= link_to  "Manage Book", books_path %></li>
-                                                    <li><%= link_to  "Manage Request", new_book_path %></li>
-                                                <% end  %> 
-                                                    <li><a href="about-us.html">Information</a></li>
+                                                    <li><a href="#" id="btn-admin">Information</a></li>
                                                     <li><%= link_to  "Logout", logout_path, method: :delete %></li>
                                                    
                                         

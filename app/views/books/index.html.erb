@@ -1,3 +1,4 @@
+<% provide :title, "Manage Books" %> 
 <%= stylesheet_link_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= render "shared/header-area"  %> 
 <div class="breadcrumb-area"> 
@@ -19,7 +20,7 @@
     <div class="container" style="margin-top: 7%;">
          <div class="row">
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary"  style="width: 50%;">Add New Book</button>
+                    <%= link_to  "Add New Book", new_book_path,class:"btn btn-primary" %>
                 </div>
                 <div class="col-sm-6">
                    <form class="form-inline">
@@ -61,9 +62,11 @@
     </tr>
   </thead>
   <tbody>
+  <% i = 0 %> 
   <% @books.each do |item|  %> 
     <tr>
-      <th scope="row">1</th>
+    <% i+= 1 %> 
+      <th scope="row"><%= i%> </th>
       <td><%= item.book_name  %> </td>
       <td><%= item.author  %></td>
       <td><%= item.publish_date.to_date  %></td>
@@ -82,7 +85,15 @@
       </td>
       <td>
             <%= link_to  "View", book_path(item) ,class: "btn btn-outline-info",id:"btn-form-admin" %> 
-            <%= link_to  "Accept", accept_path(item),class: "btn btn-outline-primary",id:"btn-form-admin", method: :post %>         
+           <% name = "Cancel" %> 
+            <% if item.status == 0  %>
+                <% name = "Accept" %> 
+            <% end %> 
+            <% if is_admin? %>
+                <%= link_to  name, accept_path(id: item.id, status: (1-item.status)),class: "btn btn-outline-primary",id:"btn-form-admin", method: :post %> 
+            <% end %>  
+            
+            <%= link_to  "Delete", book_path(item),class: "btn btn-danger",id:"btn-form-admin", method: :delete, data: {confirm: "You Sure "}%>                 
       </td>
    
     </tr>
@@ -91,7 +102,10 @@
   </tbody>
   </div>
 </table>
-
+<% else %>
+     <div class="alert alert-danger" role="alert">
+             No Record Loader
+    </div>
 <% end %> 
                     </div>
                 </div>

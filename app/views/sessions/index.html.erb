@@ -1,10 +1,11 @@
+ <% provide :title , "Login"  %> 
  <%= stylesheet_link_tag 'sessions.css', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="container-fluid"> 
  <div class="row-fluid"> 
   <div class="col-md-offset-6 col-md-6" id="box" > 
    <h2>Account Login</h2> 
    <hr> 
-
+    <%= render  "shared/flash_msg" %>
    <%= form_for :sessions,:html => {:class => 'form-horizontal',:id => 'login_form'} do |f| %>
         
          <fieldset> 

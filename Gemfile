@@ -43,7 +43,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'bootstrap-datepicker-rails'
 gem 'momentjs-rails', '>= 2.9'
 gem 'popper_js'
-
+gem "figaro"
 gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -4,9 +4,6 @@ $(document).on('turbolinks:load', function() {
         // alert(currentLocation)
         // var nextLocation = currentLocation.replace("","/books/new");
         // alert(nextLocation)
-        nextLocation= "http://localhost:3000/books/new"
-        window.location = nextLocation;
-        alert("Oke")
         // $.ajax({
 		// 	url : "/books/get_one",
 		// 	method : "GET",
@@ -18,4 +15,12 @@ $(document).on('turbolinks:load', function() {
 	    //     }, 
 		// });
     })
+
+    // function loadWelcom() {
+    //     var currentLocation = window.location.href;
+    //     if((currentLocation == 'http://localhost:3000/')){
+    //         alert("Welcom to Blog App")
+    //     }
+    // }
+    // loadWelcom() ;
 });
