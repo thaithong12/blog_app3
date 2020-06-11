@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete '/logout',to: "sessions#destroy"
   post '/accept',to: "books#change_status"
   get '/books/get_type', to: "books#get_type"
-  get '/search', to: "books#search_admin"
+  get '/search_admin', to: "books#search_admin"
   get '/register',to: "users#new"
   resources :users
 end
