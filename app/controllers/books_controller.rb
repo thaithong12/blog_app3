@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
-    before_action :is_login? ,only: [:create,:destroy,:index,:new, :show,:edit,:update,:change_status]
+    before_action :is_login? ,only: [:create,:destroy,:index,:new, :show,:edit,:update,:change_status,:search_admin,:change_favourite]
 
     
     def index
         if is_admin?
-            @books = Book.all.by_created_at.paginate(page: params[:page], per_page: 15)
+            @books = Book.all.by_created_at_asc.paginate(page: params[:page], per_page: 15)
         else
-            @books = current_user.books.paginate(page: params[:page], per_page: 15)
+            @books = current_user.by_created_at_asc.paginate(page: params[:page], per_page: 15)
         end   
        
         # where(status: 1)
@@ -41,17 +41,46 @@ class BooksController < ApplicationController
             end
             list_return = book_list + book_cate.uniq
             @books =  list_return.uniq
-            @books =  @books.paginate(:page => params[:page], :per_page => 15)
+            # byebug
+            unless is_admin?
+                @books = @books.select {|item| item.user_id == current_user.id}
+            end
             unless @books.any?
                 flash[:danger] = "No Recored By Text"
                 redirect_to :index
             end
+            flash[:success] = "Search Success Have #{@books.size} Record!"
+            @books =  @books.paginate(:page => params[:page], :per_page => 15)
+            
           rescue
             flash[:danger] = "Failed No Record"
             redirect_to books_path
           end
        
     end
+    def search_user
+        a = params[:search][:search_text]
+        book_list = Book.where("book_name LIKE '%#{a}%' ")
+        category_list = Category.where("category_name LIKE '%#{a}%'")
+        book_cate = [];
+        list_return = []
+        if category_list.any?
+            category_list.each do |item|
+                item.books.each do |book|
+                    book_cate.push book
+                end
+            end
+        end
+        list_return = book_list + book_cate.uniq
+        @books =  list_return.uniq
+        unless @books.any?
+            flash[:danger] = "No Recored By Text"
+        else
+            flash[:success] = "Search Success Have #{@books.size} Record!"
+            @books =  @books.paginate(:page => params[:page], :per_page => 10)
+        end
+    end
+    
     
     
     def show
@@ -63,14 +92,22 @@ class BooksController < ApplicationController
         @book.status = 0
         if is_admin?
             @book.status = 1
+            #byebug
         end
       
        if @book.save
+            if current_user.role == 0
+                list_admin = User.where(role: 1)
+                list_admin.each do |item|
+                    BookMailer.user_to_admin_email(item, "Pending Book",@book).deliver
+                end
+               # byebug
+            end
             flash[:success] = "Create Book Success !"
-            byebug
-            redirect_to root_path
+                #byebug
+            redirect_to books_path
        else
-            byebug
+            #byebug
             flash.now[:danger] = "Create Book Failed !"
             render :new
        end
@@ -101,14 +138,30 @@ class BooksController < ApplicationController
     end
 
     def change_status
-        @book = Book.find_by id: params[:id]
-        unless @book.status == params[:status]
-            @book.update status: params[:status]
-            flash[:success] = "Change Success !"
-            # byebug
+        begin
+            if is_admin?
+                @book = Book.find_by id: params[:id]
+                unless @book.status == params[:status]
+                    @book.update status: params[:status]
+                    temp = Book.find_by id: params[:id]
+                    if temp.status == 1
+                    BookMailer.admin_to_user_email(@book.user, "Thankyou!").deliver_now
+                    flash[:success] = "Change Success !"
+                    # byebug
+                    end
+                end
+            end
+            redirect_to books_path
+            
+        rescue => exception
+            redirect_to root_path
         end
-        redirect_to books_path
+       
     end
+    def change_favourite
+        
+    end
+    
     
     private 
 

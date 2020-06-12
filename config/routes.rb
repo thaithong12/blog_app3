@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   get '/books/get_type', to: "books#get_type"
   get '/search_admin', to: "books#search_admin"
   get '/register',to: "users#new"
+  get '/search', to: "books#search_user"
+
+  get '/favourite', to: "books#change_favourite"
   resources :users
 end

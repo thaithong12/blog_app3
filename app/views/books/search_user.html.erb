@@ -1,0 +1,99 @@
+<% provide :title ,"Search Page" %> 
+<div class="preloader d-flex align-items-center justify-content-center">
+    <div class="circle-preloader">
+        <%= image_tag "logo.png" %>
+        <div class="foode-preloader">
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<!-- ##### Header Area Start ##### -->
+<%= render "shared/header-area"  %> 
+<!-- ##### Header Area End ##### -->
+ <p> 
+       <% flash.each do |type, msg| %>
+            <% if type == "success" %>
+                <div class="alert alert-success container" style="text-align: center;"  role="alert">
+                    <%= msg %> 
+                </div>
+            <% else %> 
+                <div class="alert alert-danger container" style="text-align: center;" role="alert">
+                    <%= msg %> 
+                </div>
+            <% end %>  
+            
+        <% end %>  
+     </p>
+
+
+<section class="blog-content-area section-padding-100">
+    <div class="container">
+
+
+        <div class="row justify-content-center">
+            <!-- Blog Posts Area -->
+            <div class="col-12 col-lg-8">
+                
+                 
+                <div class="blog-posts-area">
+
+                    <!-- Single Blog Post -->
+                    <% if @books.any? %>
+                <div>
+                    <%= will_paginate @books, params: { controller: :books, action: :search_user } ,class: "page-item",id: "paginate-user"%>
+                </div>
+                    <%  @books.each do |book| %>
+                    <div class="single-blog-post d-flex flex-wrap mt-50">
+                        <!-- Thumbnail -->
+                        <div class="post-thumbnail mb-50">
+                            <a href="#">
+                                <div class="limit-image">
+                                <% if book.image_url.attached? %> 
+                                <%= image_tag book.display_image  %>
+                                <% else %> 
+                                    <%= image_tag "1.jpg"  %>
+                                <% end %> 
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Content -->
+                        <div class="post-content mb-50">
+                            <p class="post-date"><%= book.publish_date %></p>
+                            <a href="#" class="post-title">
+                                <h4><%= book.book_name %></h4>
+                            </a>
+                            <div class="post-meta">
+                                <a href="#"><span>by</span> <%= book.author %></a>
+                                <a href="#"><i class="fa fa-eye"></i> 192</a>
+                                <a href="#"><i class="fa fa-comments"></i> 08</a>
+                            </div>
+                            <p class="post-excerpt"><%= book.description.html_safe unless book.description.nil? %></p>
+                            <%= link_to  "Continue Reading", book_path(book) ,class:"read-more-btn"%>
+                           
+                            <button type="submit" class ="btn btn-light"><i class="fa fa-thumbs-up" aria-hidden="true"> Like</i></button>
+                        </div>
+                        <!-- Post Curve Line -->
+                        <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
+
+                    </div>
+                    <% end %>
+
+                    <% end %>
+                </div>
+            </div>
+
+
+            <%= render "shared/blog-content/blog-sidebar-area" %>
+        </div>
+    </div>
+</section>
+
+<!-- ##### Instagram Area Start ##### -->
+<%= render "shared/instagram"  %> 
+<!-- ##### Instagram Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+<%= render "shared/footer-area"  %> 
+
+<%= render "shared/footer-script" %>

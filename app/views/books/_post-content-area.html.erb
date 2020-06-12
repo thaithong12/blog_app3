@@ -16,13 +16,14 @@
                                 </div>
                                <p><%= @book.description.html_safe unless @book.description.nil? %></p>
                                <%= image_tag @book.display_image if @book.image_url.attached? %>
+                               <% if is_admin? || current_user.id == @book.user.id  %> 
                                <div class="row" style="margin-top: 3%;margin-left: 1%;">
                                     
                                      <%= link_to "Come Back", books_path ,class:"btn btn-success" %>
                                     
                                      <%= link_to "Edit Book", edit_book_path(@book),class:"btn btn-info btn-edit-book" %>
                                </div>
-                                
+                                <% end %> 
                               
                                 
                             </div>

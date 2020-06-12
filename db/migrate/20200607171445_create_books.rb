@@ -6,11 +6,10 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.text :description
       t.datetime :publish_date
       t.string :author
-      t.float :rating
-      t.integer :status
+      t.float :rating , default: 0
+      t.integer :status , default: 0
       t.references :user, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true
-
       t.timestamps
     end
   end

@@ -17,7 +17,7 @@ module ApplicationHelper
     end
 
     def get_categories
-        @categories = Category.all.order("created_at ASC")
+        @categories = Category.all.order("created_at ASC").uniq
     end
     
     

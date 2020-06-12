@@ -1,6 +1,7 @@
 class BookMailer < ApplicationMailer
-    def user_to_admin_email(user,subject)
+    def user_to_admin_email(user,subject, book)
         @user = user
+        @book = book
         mail(to: @user.email, subject: subject)
     end
 
@@ -8,4 +9,5 @@ class BookMailer < ApplicationMailer
         @user = user
         mail(to: @user.email, subject: subject)
     end
+
 end
