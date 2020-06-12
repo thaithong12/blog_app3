@@ -1,0 +1,29 @@
+ <div class="single-post-details-area">
+                            <div class="post-thumbnail mb-30">
+                                <img src="img/blog-img/1.jpg" alt="">
+                            </div>
+                            <div class="post-content">
+                                <p class="post-date"><%= time_ago_in_words @book.created_at %> ago.</p>
+                                <h4 class="post-title"><%= @book.book_name  %> </h4>
+                                <div class="post-meta">
+                                    <a href="#"><span>Author </span> <%= @book.author %> </a>
+
+                                    <a href="#"><i class="fa fa-eye"></i> 192</a>
+                                    <a href="#"><i class="fa fa-comments"></i> 08</a>
+                                </div>
+                                <div class="post-meta">
+                                    <a href="#"><span>recommended by</span> <%= @book.user.user_name %> </a>
+                                </div>
+                               <p><%= @book.description.html_safe unless @book.description.nil? %></p>
+                               <%= image_tag @book.image_url.variant(resize_to_limit: [100, 100]) if @book.image_url.attached? %>
+                               <div class="row" style="margin-top: 3%;margin-left: 1%;">
+                                    
+                                     <%= link_to "Come Back", books_path ,class:"btn btn-success" %>
+                                    
+                                     <%= link_to "Edit Book", edit_book_path(@book),class:"btn btn-info btn-edit-book" %>
+                               </div>
+                                
+                              
+                                
+                            </div>
+                        </div>
