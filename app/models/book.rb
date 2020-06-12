@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :favorite_books ,dependent: :destroy
   has_many :reviews ,dependent: :destroy
   has_one_attached :image_url
+  has_many :comments, dependent: :destroy
   scope :by_created_at, -> { order(created_at: :asc) }
   # validates :book_name, :description,:author,:publish_date, presence :true
   

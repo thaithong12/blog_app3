@@ -30,3 +30,6 @@ end
     name = Faker::Job.education_level
     Category.create!(category_name: name)
 end
+
+Book.create!(book_name: "abc", author: "xyz",description: "onichan", user_id: 1, category_id: 2)
+Book.first.comments.create!(user_id: 2, content: "sach nay hay ghe")
