@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
-    before_action :is_login? ,only: [:create,:destroy]
+    before_action :is_login? ,only: [:create,:destroy,:index,:new, :show,:edit,:update,:change_status]
     
     
     def index
         if is_admin?
-            @books = Book.by_created_at.paginate(page: params[:page], per_page: 15)
+            @books = Book.all.by_created_at.paginate(page: params[:page], per_page: 15)
         else
             @books = current_user.books.paginate(page: params[:page], per_page: 15)
         end   
@@ -12,10 +12,25 @@ class BooksController < ApplicationController
         # where(status: 1)
         # byebug
     end
+    def get_type
+       a = params[:type];
+       byebug
+       respond_to do |format|
+           format.js { a  }
+       end
+        # where(status: 1)
+        # byebug
+    end
     def new
         @book = Book.new
         @name_button = "Create Book"
     end
+
+    def search
+        a = params[:search_books][:txt_value]
+        byebug
+    end
+    
     
     def show
         @book = Book.find_by id: params[:id]
@@ -82,7 +97,8 @@ class BooksController < ApplicationController
     
     def is_login?
         return if current_user
-            redirect_to login_path
+        flash[:danger] = "You need Login !"
+        redirect_to login_path
     end
     
     
