@@ -9,9 +9,9 @@
             <span class="comment-date">27 Aug 2018</span>
             <h5><%= User.find(comment.user_id).user_name %></h5>
             <p><%= comment.content %></p>
-            <% if comment.user_id == current_user.id %>
-                <a href="#">Edit</a>
-                <a class="active" href="#">Delete</a>
+            <% if current_user && comment.user_id == current_user.id %>
+                <a>Edit</a>
+               <%= link_to "Delete", comment_path, method: :delete %>
             <% end %>
         </div>
     </div>
