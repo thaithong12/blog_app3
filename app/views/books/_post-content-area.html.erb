@@ -15,8 +15,11 @@
                                     <a href="#"><span>recommended by</span> <%= @book.user.user_name %> </a>
                                 </div>
                                <p><%= @book.description.html_safe unless @book.description.nil? %></p>
+
                                <%= image_tag @book.display_image if @book.image_url.attached? %>
                                <% if is_admin? || current_user.id == @book.user.id  %> 
+
+                               <%= image_tag @book.image_url.variant(resize_to_limit: [100, 100]) if @book.image_url.attached? %>
                                <div class="row" style="margin-top: 3%;margin-left: 1%;">
                                     
                                      <%= link_to "Come Back", books_path ,class:"btn btn-success" %>
