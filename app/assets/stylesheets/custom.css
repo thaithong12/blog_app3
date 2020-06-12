@@ -17,3 +17,15 @@
     padding-bottom: 2%;
     padding-top: 5%;
 }
+.limit-image{
+    max-width: 360px;
+}
+#paginate-user{
+    font-size: 25px;
+    padding-bottom: 2%;
+    padding-top: 5%;
+}
+.icon-home-user{
+    max-width: 360px;
+    max-height: 400px;
+}
