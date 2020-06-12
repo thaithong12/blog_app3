@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/search_admin', to: "books#search_admin"
   get '/register',to: "users#new"
   resources :users
+  resources :account_activations, only: :edit
 end

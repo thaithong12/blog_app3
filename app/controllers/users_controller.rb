@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    #load_user
     @user = User.new user_params
     #byebug
   	if @user.save
       #byebug
-      #@user.send_activation_email
+      @user.send_activation_email
       @user.update_attribute :role, 0
   	  flash[:success] = "Check your email to activate your account"	
   	  redirect_to root_path	
