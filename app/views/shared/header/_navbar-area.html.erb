@@ -1,0 +1,65 @@
+<div class="foode-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar" id="foodeNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><%= image_tag( "logo.png") %></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li>
+                                    <%= link_to  "Home",  root_path %>
+                                    </li>
+                                    <li><a href="#">Categories</a>
+                                        <ul class="dropdown">
+                                            <%if get_categories.any? %> 
+                                                <% get_categories.each do |item| %> 
+                                            <li>
+                                                <%= link_to  item.category_name,"#"  %>                                              
+                                            </li>
+                                            <% end %> 
+                                            <% end %> 
+                                        </ul>
+                                    </li>
+                                    
+                                    <li><a href="#">Travel</a></li>
+                                    <li><a href="about-us.html">About</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                   
+                                    <% if current_user  %> 
+                                        <li><a href="contact.html"><%= current_user.user_name  %>  </a>
+                                            <ul class="dropdown">
+                                               
+                                                    <li><%= link_to  "Manage Book", books_path %></li>
+                                                    <li><a href="#" id="btn-admin">Information</a></li>
+                                                    <li><%= link_to  "Logout", logout_path, method: :delete %></li>
+                                                   
+                                        
+                                                
+                                            </ul> 
+                                        </li>
+                                   
+                                    <% end %> 
+                                    
+                                     
+                                 
+                                    
+                                </ul>
+
+                            </div>

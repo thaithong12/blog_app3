@@ -1,0 +1,31 @@
+<% provide :title ,"Home Page" %> 
+<div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+        <%= image_tag(asset_path "logo.png") %>
+            <div class="foode-preloader">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <%= render "shared/header-area"  %> 
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Hero Area Start ##### -->
+    <%= render "shared/hero-area"  %> 
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Blog Content Area Start ##### -->
+
+    <%= render "shared/blog-content"  %> 
+    <!-- ##### Blog Content Area End ##### -->
+
+    <!-- ##### Instagram Area Start ##### -->
+    <%= render "shared/instagram"  %> 
+    <!-- ##### Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <%= render "shared/footer-area"  %> 
+
+    <%= render "shared/footer-script" %> 
