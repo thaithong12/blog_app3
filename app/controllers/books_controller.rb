@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
     before_action :is_login? ,only: [:create,:destroy,:index,:new, :show,:edit,:update,:change_status]
-    
+
     
     def index
         if is_admin?
@@ -26,9 +26,31 @@ class BooksController < ApplicationController
         @name_button = "Create Book"
     end
 
-    def search
-        a = params[:search_books][:txt_value]
-        byebug
+    def search_admin
+        begin
+            a = params[:search][:search_text]
+            book_list = Book.where("book_name LIKE '%#{a}%' ") 
+            category_list = Category.where("category_name LIKE '%#{a}%'")
+            book_cate = [];
+            if category_list.any?
+                category_list.each do |item|
+                    item.books.each do |book|
+                        book_cate.push book
+                    end
+                end
+            end
+            list_return = book_list + book_cate.uniq
+            @books =  list_return.uniq
+            @books =  @books.paginate(:page => params[:page], :per_page => 15)
+            unless @books.any?
+                flash[:danger] = "No Recored By Text"
+                redirect_to :index
+            end
+          rescue
+            flash[:danger] = "Failed No Record"
+            redirect_to books_path
+          end
+       
     end
     
     
@@ -93,7 +115,6 @@ class BooksController < ApplicationController
     def book_params 
         params.require(:book).permit :book_name, :description,:publish_date,:category_id,:author,:image_url
     end
-    
     
     def is_login?
         return if current_user

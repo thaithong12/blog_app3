@@ -37,7 +37,8 @@
                 <div class="col-sm-6">
                     <%= link_to  "Add New Book", new_book_path,class:"btn btn-primary" %>
                 </div>
-                <div class="col-sm-6">   
+                <div class="col-sm-6">
+   
 
     <%= form_for :search,method: "get", url: search_admin_path, html: {class: "form-inline", id: "login_form"} do |f| %>
          <div class="form-group mx-sm-3 mb-2"> 
@@ -73,7 +74,7 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <%= will_paginate @books, params: { controller: :books, action: :index } ,class: "page-item",id: "paginate-admin"%>
+        <%= will_paginate @books, params: { controller: :books, action: :search_admin } ,class: "page-item",id: "paginate-admin"%>
     </div>
 </div>
 <table class="table">
@@ -90,8 +91,9 @@
     </tr>
   </thead>
   <tbody>
-  <% i = 0 %> 
+  <% i = 0 %>  
   <% @books.each do |item|  %> 
+    <% if item.present? %> 
     <tr>
     <% i+= 1 %> 
       <th scope="row"><%= i%> </th>
@@ -125,6 +127,7 @@
       </td>
    
     </tr>
+    <% end %> 
      <% end  %> 
      
   </tbody>
@@ -135,7 +138,7 @@
              No Record Loader
     </div>
 <% end %> 
-<%= will_paginate @books, params: { controller: :books, action: :index } ,class: "page-item text-center",id: "paginate-admin"%>
+<%= will_paginate @books, params: { controller: :books, action: :search_admin } ,class: "page-item text-center",id: "paginate-admin"%>
                     </div>
                 </div>
 
