@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	  has_many :comments ,dependent: :destroy
   	has_many :favorite_books ,dependent: :destroy
 	  VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    attr_accessor :remember_token, :activation_token
+    attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
     before_create :create_activation_digest
 	  validates :email, presence: true, uniqueness: true
@@ -39,8 +39,19 @@ class User < ApplicationRecord
 
     def send_activation_email
       UserMailer.account_activation(self).deliver_now
-    end  
+    end 
 
+    def create_reset_digest 
+      self.reset_token = SecureRandom.urlsafe_base64
+      update_columns reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now
+    end 
+    
+    def send_password_reset_email
+      UserMailer.password_reset(self).deliver_now
+    end
+    def password_reset_expired?
+      reset_sent_at < 5.minutes.ago
+    end
     class << self
       def digest token
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -57,6 +68,6 @@ class User < ApplicationRecord
       self.activation_token =SecureRandom.urlsafe_base64
       self.activation_digest =User.digest(activation_token)
     end
- 
+    
 	
 end

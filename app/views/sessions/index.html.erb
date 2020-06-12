@@ -13,7 +13,7 @@
       <div class="col-md-12"> 
        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
             
-            <%= f.email_field :email, class: "form-control text-input-login",placeholder:"Username",required:'true' %>
+            <%= f.email_field :email, class: "form-control text-input-login",placeholder:"Email",required:'true' %>
        </div> 
       </div> 
      </div> 
@@ -22,6 +22,7 @@
        <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
             <%= f.password_field :password,class:"form-control text-input-login",placeholder:"Password",required:'true'  %> 
        </div> 
+
       </div> 
      </div> 
      <div style="padding-left: 4%;">
@@ -39,17 +40,15 @@
 
       <div class="text-center p-t-45 p-b-4">
 <span class="txt1">
-Forgot
+Forgot your password?
 </span>
-<a href="#" class="txt2 hov1">
-Username / Password?
-</a>
+<%= link_to "Click here", new_password_reset_path %>
 </div>
 <div class="text-center">
 <span class="txt1">
 Create an account?
 </span>
-<%= link_to  "Register", register_path %>
+<%= link_to  "Register here", register_path %>
 
 </a>
 </div>

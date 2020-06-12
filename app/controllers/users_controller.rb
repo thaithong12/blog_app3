@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   def update
     
     if @user.update_attributes user_params
-      byebug
       flash[:success] = "Update successfully"
       redirect_to root_path
     else
@@ -22,6 +21,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    #byebug
+    @user.image_url.attach(params[:user][:image_url])
     #byebug
   	if @user.save
       #byebug
