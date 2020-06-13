@@ -9,14 +9,17 @@
                             </div>
                             <!-- Thumbnail -->
                             <div class="about-thumbnail">
-                                <%= image_tag  "about-me.jpg" %>
+                                 <%= image_tag(current_user.image_url) if current_user.image_url.attached?%>
                              
                             </div>
                             <!-- Content -->
                             <div class="widget-content text-center">
-                                <%= image_tag  "signature.png" %>
+                                <p><%= current_user.user_name %></p>
+                                <p><%= current_user.birthday.to_date if current_user.birthday%></p>
+                                <p><%= current_user.address if current_user.address %></p>
+                                 
                             
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <p>"A baritone who falls in love with science and technology"</p>
                             </div>
                         </div>
 
