@@ -44,16 +44,13 @@
                                    
                                     <% if current_user  %> 
                                         <li><a href="contact.html"><%= current_user.user_name  %>  </a>
-                                            <ul class="dropdown">
-                                               
-                                                    <li><%= link_to  "Manage Book", books_path %></li>
-                                                   <li><%= link_to  "Favourite Books", books_path %></li>
-                                                    <li><a href="#" id="btn-admin">Information</a></li>
-                                                    <li><%= link_to  "Logout", logout_path, method: :delete %></li>
-                                                   
-                                        
+                                          <ul class="dropdown">
+                                            <li><%= link_to  "Manage Book", books_path %></li>
+                                            <li><%= link_to  "Favourite Books", books_path %></li>
+                                            <li><%= link_to  "Change profile", edit_user_path(current_user)%></li>
+                                            <li><%= link_to  "Logout", logout_path, method: :delete %></li>
                                                 
-                                            </ul> 
+                                         </ul> 
                                         </li>
                                    
                                     <% end %> 

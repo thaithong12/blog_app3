@@ -3,22 +3,26 @@ class SessionsController < ApplicationController
     def index
         
     end
+    
     def create
         @user = User.find_by email: params[:sessions][:email].downcase
         if @user.present? && @user.authenticate(params[:sessions][:password])
           login_user @user 
-          if params[:sessions][:remember_me] =="1"
-            remember(@user)      
+          if @user.is_active?
+            login_user @user
+            params[:sessions][:remember_me]=="1"? remember(@user): forget(@user)
+            #flash[:success] = "Login successfully"
+            redirect_to root_path
           else
-            forget(@user)        
-          end         
-          #flash[:success] = "Login successfully"
-          redirect_to root_path
+            #message ="Account not activated. Check your email for the activation link." 
+            #flash[:warning]= message
+            redirect_to login_path
+          end
         else
           #flash.now[:danger] = "Email or password incorrect!!!" 
           redirect_to login_path  
         end     
-      end
+    end
     
       def destroy
         forget(current_user)
@@ -27,23 +31,7 @@ class SessionsController < ApplicationController
         #flash[:success] = "Goodbye"
         redirect_to login_path
       end
-    # def create
-    #     @user = User.find_by email: params[:sessions][:email].downcase
-    #     if @user.present? && @user.is_active && @user.authenticate(params[:sessions][:password])
-    #         session[:user_id] = @user.id        
-    #         flash[:success]= "Login Success !"
-    #         redirect_to root_path
-    #     else
-    #         flash.now[:danger] = "Login Failed !"
-    #         render :index
-    #     end
-    # end
-  
-    # def destroy
-    #   session.delete(:user_id)
-    #   current_user = nil;
-    #   redirect_to root_path
-    # end
+    
   
     private 
 
