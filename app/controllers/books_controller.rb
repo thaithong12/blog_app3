@@ -6,7 +6,7 @@ class BooksController < ApplicationController
         if is_admin?
             @books = Book.all.by_created_at_asc.paginate(page: params[:page], per_page: 15)
         else
-            @books = current_user.by_created_at_asc.paginate(page: params[:page], per_page: 15)
+            @books = current_user.books.paginate(page: params[:page], per_page: 15)
         end   
        
         # where(status: 1)
