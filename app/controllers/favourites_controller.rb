@@ -18,6 +18,7 @@ class FavouritesController < ApplicationController
       @book = Book.find_by id: params[:id]
       @book.favorite_books.build(user_id: current_user.id)
       if @book.save 
+        flash[:success] = "Add Favourite Book Successs"
           redirect_to root_path
       end
     rescue => exception
@@ -26,10 +27,10 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    @book = Book.find_by id: params[:id]
-    byebug
-    u =  @book.favorite_books.find_by(user_id: current_user.id)
-    if @book.favorite_books.delete(current_user,u)
+    # @book = Book.find_by id: params[:id]
+    
+    u =  FavoriteBook.where(user_id: current_user.id, book_id: params[:id]).first.destroy
+    if u.destroy
       flash[:success] = "Delete Succeess"
     end
     

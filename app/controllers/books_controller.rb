@@ -13,7 +13,7 @@ class BooksController < ApplicationController
         # byebug
     end
     def get_type
-       a = params[:type];
+       a = params[:type]
        byebug
        respond_to do |format|
            format.js { a  }
