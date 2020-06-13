@@ -15,6 +15,20 @@ $(document).on('turbolinks:load', function() {
 	    //     }, 
 		// });
     })
+    $("#exampleFormControlSelect1").change(function(){
+        var selectedCountry = $(this).children("option:selected").val();
+        alert("You have selected the country - " + selectedCountry);
+         $.ajax({
+			url : '/books/get_type',
+			method : 'GET',
+			data : {
+				type : selectedCountry,
+			},
+			success: function(data) {
+				alert(data);
+	        }, 
+		});
+    });
 
     // function loadWelcom() {
     //     var currentLocation = window.location.href;

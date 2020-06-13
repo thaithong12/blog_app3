@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_06_08_125251) do
+=======
+ActiveRecord::Schema.define(version: 2020_06_11_172116) do
+>>>>>>> 22ae0aaed3cc7406d89b6a8f93fed72d1d80b8b8
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -108,7 +112,14 @@ ActiveRecord::Schema.define(version: 2020_06_08_125251) do
     t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.boolean "is_active"
+=======
+    t.boolean "is_active", default: false
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.datetime "activated_at"
+>>>>>>> 22ae0aaed3cc7406d89b6a8f93fed72d1d80b8b8
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

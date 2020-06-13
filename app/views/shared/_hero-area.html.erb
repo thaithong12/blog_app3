@@ -2,134 +2,28 @@
         <div class="hero-post-slides owl-carousel">
 
             <!-- Single Hero Post -->
+            <% if get_books_with_rating.any? %> 
+                <% get_books_with_rating.each do |item| %> 
             <div class="single-hero-post">
                 <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "2.jpg" %>);"></div>
+                <% if item.image_url.attached? %> 
+                <div class="slide-img bg-img" style="background-image: url(<%= url_for(item.image_url)  %>);">
+                </div>
+                <% else %>
+                     <div class="slide-img bg-img" style="background-image: url(<%= asset_path "1.jpg"  %>);">
+                </div>
+                <% end %> 
                 <!-- Post Content -->
                 <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / 35 Comments</p>
+                    <p><%= item.created_at %> </p>
                     <a href="#" class="post-title">
-                        <h4>Fried Pizzas on parchment paper with basil.</h4>
+                        <h4><%= item.book_name %> </h4>
                     </a>
                 </div>
             </div>
-
+                <% end %> 
+            <% end %> 
             <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "3.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / Foody</p>
-                    <a href="#" class="post-title">
-                        <h4>Quick Vegan Enchiladas with Sweet Potato Sauce</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "4.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>aug 8, 2018 / health</p>
-                    <a href="#" class="post-title">
-                        <h4>Eleven Slushie Cocktails I Bookmarked</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "5.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / drinks</p>
-                    <a href="#" class="post-title">
-                        <h4>Homemade Strawberry Almond Milk</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "6.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / foody</p>
-                    <a href="#" class="post-title">
-                        <h4>Kitchen Sink Sunflower Salad in a bow.</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "7.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / 35 Comments</p>
-                    <a href="#" class="post-title">
-                        <h4>Fried Pizzas on parchment paper with basil.</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "8.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / Foody</p>
-                    <a href="#" class="post-title">
-                        <h4>Quick Vegan Enchiladas with Sweet Potato Sauce</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "4.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>aug 8, 2018 / health</p>
-                    <a href="#" class="post-title">
-                        <h4>Eleven Slushie Cocktails I Bookmarked</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "5.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / drinks</p>
-                    <a href="#" class="post-title">
-                        <h4>Homemade Strawberry Almond Milk</h4>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post">
-                <!-- Post Image -->
-                <div class="slide-img bg-img" style="background-image: url(<%= asset_path "6.jpg" %>);"></div>
-                <!-- Post Content -->
-                <div class="hero-slides-content">
-                    <p>MAY 8, 2018 / foody</p>
-                    <a href="#" class="post-title">
-                        <h4>Kitchen Sink Sunflower Salad in a bow.</h4>
-                    </a>
-                </div>
-            </div>
 
         </div>
     </section>

@@ -16,7 +16,11 @@ User.create!(user_name: "admin",
 
 10.times do |n|
 	name = Faker::Name.name
+<<<<<<< HEAD
 	email = "example-#{n+1}@railstutorial.org" 
+=======
+	email = "user-#{n+1}@gmail.com" 
+>>>>>>> 22ae0aaed3cc7406d89b6a8f93fed72d1d80b8b8
 	password = "password"
 	User.create!(user_name: name,
 				email: email,
@@ -29,4 +33,19 @@ end
 10.times do |n|
     name = Faker::Job.education_level
     Category.create!(category_name: name)
+<<<<<<< HEAD
+=======
+end
+
+users =User.order(:created_at).take(6)
+30.times do  
+	description =Faker::Lorem.sentence(50)  
+	book_name = Faker::Job.field 
+	author = Faker::Artist.name
+	publish_date = Time.now
+	rating = Faker::Number.between(from: 1, to: 5) #=> 7
+	status = Faker::Number.between(from: 0, to: 1)
+	category_id = Faker::Number.between(from: 1, to: 10) 
+	users.each {|user| user.books.create!(description: description,book_name: book_name,author: author, publish_date: publish_date,rating: rating,status: status,category_id: category_id ) }
+>>>>>>> 22ae0aaed3cc7406d89b6a8f93fed72d1d80b8b8
 end
