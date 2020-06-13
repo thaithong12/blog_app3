@@ -31,23 +31,23 @@
                                             <%if get_categories.any? %> 
                                                 <% get_categories.each do |item| %> 
                                             <li>
-                                                <%= link_to  item.category_name,"#"  %>                                              
+                                                <%= link_to  item.category_name, categories_show_path(id: item.id) %>                                              
                                             </li>
                                             <% end %> 
                                             <% end %> 
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="#">Travel</a></li>
+                                    
                                     <li><a href="about-us.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+            
                                    
                                     <% if current_user  %> 
                                         <li><a href="contact.html"><%= current_user.user_name  %>  </a>
                                             <ul class="dropdown">
                                                
                                                     <li><%= link_to  "Manage Book", books_path %></li>
-                                                   <li><%= link_to  "Favourite Books", books_path %></li>
+                                                   <li><%= link_to  "Favourite Books", favourites_path %></li>
                                                     <li><a href="#" id="btn-admin">Information</a></li>
                                                     <li><%= link_to  "Logout", logout_path, method: :delete %></li>
                                                    

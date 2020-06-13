@@ -158,13 +158,10 @@ class BooksController < ApplicationController
         end
        
     end
-    def change_favourite
-        
-    end
+   
     
     
     private 
-
     def book_params 
         params.require(:book).permit :book_name, :description,:publish_date,:category_id,:author,:image_url
     end

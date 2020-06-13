@@ -37,7 +37,7 @@ users =User.order(:created_at).take(6)
 	book_name = Faker::Job.field 
 	author = Faker::Artist.name
 	publish_date = Time.now
-	rating = Faker::Number.between(from: 1, to: 5) #=> 7
+	rating = Faker::Number.between(from: 1, to: 4) #=> 7
 	status = Faker::Number.between(from: 0, to: 1)
 	category_id = Faker::Number.between(from: 1, to: 10) 
 	users.each {|user| user.books.create!(description: description,book_name: book_name,author: author, publish_date: publish_date,rating: rating,status: status,category_id: category_id ) }

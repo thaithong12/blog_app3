@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/show'
+  get 'favourites/index'
   get 'users/new'
   get 'users/create'
   mount Ckeditor::Engine => '/ckeditor'
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   get '/register',to: "users#new"
   get '/search', to: "books#search_user"
 
-  get '/favourite', to: "books#change_favourite"
+  get '/add_favourite', to: "favourites#change_favourite"
   resources :users
+  resources :favourites
 end

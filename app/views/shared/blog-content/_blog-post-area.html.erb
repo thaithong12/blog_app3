@@ -31,9 +31,16 @@
                                 <p class="post-excerpt"><%= item.description.html_safe unless item.description.nil?  %> </p>
                               <%= link_to  "Continue Reading ", book_path(item),class:"read-more-btn" %>
                               <br/>
+                                <% if current_user.favorite_books.where(book_id: item.id).present? %> 
+                               
                                  <i class="fa fa-thumbs-up" aria-hidden="true"> 
-                                    <%= link_to  "Like", favourite_path, class: "btn btn-success"%>
+                                    <%= link_to  "Have Liked", favourite_path(id: item.id), class: "btn btn-primary",method: :delete%>
                                 </i>
+                                <% else %>
+                                       <i class="fa fa-thumbs-up" aria-hidden="true"> 
+                                    <%= link_to  "Like", add_favourite_path(id: item.id), class: "btn btn-success"%>
+                                </i>
+                                <% end %> 
                             </div>
                             <!-- Post Curve Line -->
                             <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>

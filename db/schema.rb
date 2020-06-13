@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_06_11_172116) do
     t.text "description"
     t.datetime "publish_date"
     t.string "author"
-    t.float "rating"
-    t.integer "status"
+    t.float "rating", default: 0.0
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
