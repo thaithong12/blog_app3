@@ -1,0 +1,52 @@
+<% provide :title ,"About Page" %> 
+<div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+        <%= image_tag(asset_path "logo.png") %>
+            <div class="foode-preloader">
+                <span></span>
+            </div>
+        </div>
+    </div>
+   
+
+    <!-- ##### Header Area Start ##### -->
+    <%= render "shared/header-area"  %> 
+    <!-- ##### Header Area End ##### -->
+     
+    <div class="container">
+        <h1 style="text-align: center;">Some Pictures About Us</h1>
+        <div class="row">
+            <div class="col-sm-6" >
+                <%= image_tag(asset_path "Anh1.jpg") %>
+            </div>
+              <div class="col-sm-6">
+                <%= image_tag(asset_path "Anh2.jpg") %>
+            </div>
+        </div>
+         <div class="row">
+              <div class="col-sm-6">
+                <%= image_tag(asset_path "Anh4.jpg") %>
+            </div>
+              <div class="col-sm-6">
+                <%= image_tag(asset_path "Anh3.jpg") %>
+            </div>
+        </div>
+         <div class="row">
+              <div class="col-sm-6">
+                <%= image_tag(asset_path "Anh7.jpg") %>
+            </div>
+              <div class="col-sm-6">
+                <%= image_tag(asset_path "Anh6.JPG") %>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- ##### Instagram Area Start ##### -->
+    <%= render "shared/instagram"  %> 
+    <!-- ##### Instagram Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <%= render "shared/footer-area"  %> 
+
+    <%= render "shared/footer-script" %>
