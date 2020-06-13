@@ -2,143 +2,53 @@
                     <div class="blog-posts-area">
 
                         <!-- Single Blog Post -->
+                        <% if @books_new.any? %> 
+                            <% @books_new.each do |item|  %> 
                         <div class="single-blog-post d-flex flex-wrap mt-50">
                             <!-- Thumbnail -->
-                            <div class="post-thumbnail mb-50">
+                            <div class="post-thumbnail mb-50 icon-home-user">
                                 <a href="#">
-                                <%= image_tag  "8.jpg" %>
+                                <% if item.image_url.attached? %> 
+                                     <%= image_tag item.display_image if item.image_url.attached?%>
+                                <% else %> 
+                                     <%= image_tag "lp5.jpg"%>
+                                <% end %> 
+                               
                                </a>
                             </div>
                             <!-- Content -->
                             <div class="post-content mb-50">
-                                <p class="post-date">MAY 8, 2018 / foody</p>
-                                <a href="#" class="post-title">
-                                    <h4>Vegetarian Spring Pho with Sweet Potato Noodles and Heirloom Beans</h4>
+                              
+                                <a href="#" >
+                                    <h4 class="post-title"><%= item.book_name  %> </h4>
                                 </a>
+                                  <p class="post-date"><%= item.created_at %> </p>
                                 <div class="post-meta">
-                                    <a href="#"><span>by</span> Sarah Jenks</a>
+                                    <a href="#"><span>by</span><%= item.author %> </a>
                                     <a href="#"><i class="fa fa-eye"></i> 192</a>
                                     <a href="#"><i class="fa fa-comments"></i> 08</a>
                                 </div>
-                                <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                <a href="#" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                <p class="post-excerpt"><%= item.description.html_safe unless item.description.nil?  %> </p>
+                              <%= link_to  "Continue Reading ", book_path(item),class:"read-more-btn" %>
+                              <br/>
+                                 <i class="fa fa-thumbs-up" aria-hidden="true"> 
+                                    <%= link_to  "Like", favourite_path, class: "btn btn-success"%>
+                                </i>
                             </div>
                             <!-- Post Curve Line -->
                             <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
                             
                         </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex flex-wrap mt-50">
-                            <!-- Thumbnail -->
-                            <div class="post-thumbnail mb-50">
-                                <a href="#">
-                                <%= image_tag  "9.jpg" %>
-                             </a>
-                            </div>
-                            <!-- Content -->
-                            <div class="post-content mb-50">
-                                <p class="post-date">MAY 12, 2018 / drinks</p>
-                                <a href="#" class="post-title">
-                                    <h4>Grain-Free Sweet &amp; Savory Activated Walnut Granola</h4>
-                                </a>
-                                <div class="post-meta">
-                                    <a href="#"><span>by</span> Sarah Jenks</a>
-                                    <a href="#"><i class="fa fa-eye"></i> 192</a>
-                                    <a href="#"><i class="fa fa-comments"></i> 08</a>
-                                </div>
-                                <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                <a href="#" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- Post Curve Line -->
-                               <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
                         
-                        </div>
+                            <% end %> 
+                        <% end %> 
 
                         <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex flex-wrap mt-50">
-                            <!-- Thumbnail -->
-                            <div class="post-thumbnail mb-50">
-                            
-                                <a href="#">
-                                <%= image_tag  "10.jpg" %>
-                               </a>
-                            </div>
-                            <!-- Content -->
-                            <div class="post-content mb-50">
-                                <p class="post-date">MAY 15, 2018 / Coffee</p>
-                                <a href="#" class="post-title">
-                                    <h4>Self-Care Interview Series: Gabrielle Russomagno</h4>
-                                </a>
-                                <div class="post-meta">
-                                    <a href="#"><span>by</span> Sarah Jenks</a>
-                                    <a href="#"><i class="fa fa-eye"></i> 192</a>
-                                    <a href="#"><i class="fa fa-comments"></i> 08</a>
-                                </div>
-                                <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                <a href="#" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- Post Curve Line -->
-                               <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
-                        
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex flex-wrap mt-50">
-                            <!-- Thumbnail -->
-                            <div class="post-thumbnail mb-50">
-                         
-                                <a href="#">   <%= image_tag  "11.jpg" %></a>
-                            </div>
-                            <!-- Content -->
-                            <div class="post-content mb-50">
-                                <p class="post-date">MAY 20, 2018 / foody</p>
-                                <a href="#" class="post-title">
-                                    <h4>Green Skillet Pizza with Asparagus and Pesto</h4>
-                                </a>
-                                <div class="post-meta">
-                                    <a href="#"><span>by</span> Sarah Jenks</a>
-                                    <a href="#"><i class="fa fa-eye"></i> 192</a>
-                                    <a href="#"><i class="fa fa-comments"></i> 08</a>
-                                </div>
-                                <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                <a href="#" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- Post Curve Line -->
-                            <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex flex-wrap mt-50">
-                            <!-- Thumbnail -->
-                            <div class="post-thumbnail mb-50">
-
-                                <a href="#">
-                                <%= image_tag  "12.jpg" %></a>
-                            </div>
-                            <!-- Content -->
-                            <div class="post-content mb-50">
-                                <p class="post-date">MAY 28, 2018 / health</p>
-                                <a href="#" class="post-title">
-                                    <h4>Green Skillet Pizza with Asparagus and Pesto</h4>
-                                </a>
-                                <div class="post-meta">
-                                    <a href="#"><span>by</span> Sarah Jenks</a>
-                                    <a href="#"><i class="fa fa-eye"></i> 192</a>
-                                    <a href="#"><i class="fa fa-comments"></i> 08</a>
-                                </div>
-                                <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                <a href="#" class="read-more-btn">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- Post Curve Line -->
-                         <%= image_tag  "post-curve-line.png", class:"post-curve-line"%>
-                        </div>
 
                     </div>
-
+                    <div class="foode-pager mt-50" style="margin-left: 28%;">
+                        <%= will_paginate @books_new, params: { controller: :home, action: :index } ,class: "page-item",id: "paginate-admin"%>
+                    </div>
                     <!-- Pager -->
-                    <ol class="foode-pager mt-50">
-                        <li><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Newer</a></li>
-                        <li><a href="#">Older <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
-                    </ol>
+
                 </div>

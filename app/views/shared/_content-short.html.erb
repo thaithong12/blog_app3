@@ -1,12 +1,21 @@
+ 
+ <% if most_activities%>
+    <% most_activities.each do |item| %> 
   <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <%= image_tag  "lp2.jpg" %>
+        <div class="post-thumb">
+            <% if item.image_url.attached?  %> 
+            <%= image_tag item.display_image  %>
+            <% else %> 
+                    <%= image_tag "about-me"  %>
+            <% end %> 
                                  
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>The Most Popular Recipe Last Month</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Erin Alderson</a>
-                                </div>
-                            </div>
+         </div>
+         <div class="post-content">
+             <a href="#" class="post-title">
+                 <h6><%= item.user_name  %></h6>
+            </a>
+            <a href="#" class="post-author"><span></span>Number of Books : <%= item.books.where(status: 1).size %> </a>
+        </div>
+</div>
+    <% end %> 
+<% end %> 

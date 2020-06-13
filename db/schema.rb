@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_125251) do
+ActiveRecord::Schema.define(version: 2020_06_11_172116) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_125251) do
     t.text "description"
     t.datetime "publish_date"
     t.string "author"
-    t.float "rating"
-    t.integer "status"
+    t.float "rating", default: 0.0
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -107,7 +107,10 @@ ActiveRecord::Schema.define(version: 2020_06_08_125251) do
     t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_active"
+    t.boolean "is_active", default: false
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.datetime "activated_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
