@@ -36,7 +36,13 @@ class FavouritesController < ApplicationController
     
     redirect_to favourites_path
   end
-  
+  private 
+  def is_login?
+    return if current_user
+    flash[:danger] = "You need Login !"
+    redirect_to login_path
+  end
+
 
 
 end

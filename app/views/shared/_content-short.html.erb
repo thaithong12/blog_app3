@@ -4,7 +4,7 @@
   <div class="single-latest-post d-flex">
         <div class="post-thumb">
             <% if item.image_url.attached?  %> 
-            <%= image_tag item.display_image  %>
+            <%= image_tag item.image_url  %>
             <% else %> 
                     <%= image_tag "about-me"  %>
             <% end %> 
