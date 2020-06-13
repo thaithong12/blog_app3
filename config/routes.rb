@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'categories/show'
   get 'favourites/index'
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'users/new'
   get 'users/create'
   get '/about',to: 'home#about'
@@ -21,4 +23,6 @@ Rails.application.routes.draw do
   get '/add_favourite', to: "favourites#change_favourite"
   resources :users
   resources :favourites
+  resources :account_activations, only: :edit
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end

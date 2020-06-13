@@ -1,0 +1,50 @@
+
+ <% provide :title , "Reset password"  %> 
+ <%= stylesheet_link_tag 'sessions.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid"> 
+ <div class="row-fluid"> 
+  <div class="col-md-offset-6 col-md-6" id="box" > 
+   <h2>Enter your new password</h2> 
+   <hr> 
+    <%= render  "shared/flash_msg" %>
+   <%= form_for(@user, url: password_reset_path(params[:id])) do|f|%> 
+        
+         <fieldset> 
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+            <%= hidden_field_tag :email, @user.email %>
+            <%= f.password_field :password,class:"form-control text-input-login",placeholder:"Password",required:'true'  %> 
+       </div> 
+      </div> 
+     </div> 
+
+      <div class="form-group"> 
+      <div class="col-md-12"> 
+       <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+            <%= f.password_field :password_confirmation,class:"form-control text-input-login",placeholder:"Confirm your password",required:'true'  %> 
+       </div> 
+      </div> 
+     </div> 
+     
+   
+     <div class="form-group"> 
+      <div class="col-md-12"> 
+        <%= f.submit "Submit", class:"btn btn-md btn-danger pull-right" %>
+      </div> 
+     </div> 
+
+      <div class="text-center p-t-45 p-b-4">
+
+<br/>    
+<br/>   
+
+    </fieldset> 
+
+
+   <% end %>
+
+  </div> 
+ </div>
+</div>	
+
